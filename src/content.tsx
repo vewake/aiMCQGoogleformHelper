@@ -70,7 +70,7 @@ async function solveAllQuestions() {
     let prompt = SYSTEM_PROMPT.replace("{{Question}}", question.innerText).replace("1 point", "Options:").replace("*", " ");
     prompt = prompt.replace("*", "")
     const solution = await getAIResponse(prompt)
-    if (solution.correctOption != -1 && solution.correctOption > 4) {
+    if (solution.correctOption != -1) {
       options[solution.correctOption - 1].click();
     } else {
       alert("AI was not able to solve the question but try" + solution.correctOption);
