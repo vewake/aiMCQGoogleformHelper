@@ -51,30 +51,42 @@ allQuestions.forEach((question: any) => {
     let options = question.querySelectorAll(".AB7Lab");
     let prompt = SYSTEM_PROMPT.replace("{{Question}}", question.innerText).replace("1 point", "Options:").replace("*", " ");
     prompt = prompt.replace("*", "")
-    const solution = getAIResponse(prompt).then((solution) => {
-      if (solution.correctOption != -1) {
-        options[solution.correctOption - 1].click();
-      } else {
-        alert("AI was not able to solve the question but try" + solution.correctOption);
-      }
-    });
-    console.log(prompt);
-  };
+    try {
+
+      const solution = getAIResponse(prompt).then((solution) => {
+        if (solution.correctOption != -1) {
+          options[solution.correctOption - 1].click();
+        } else {
+          alert("AI was not able to solve the question but try" + solution.correctOption);
+        }
+      });
+      console.log(prompt);
+    } catch (e) {
+      alert("some error occured with question" + question.innerText);
+      console.log(e)
+    };
+  }
 });
 
 async function solveAllQuestions() {
 
   let allQuestions: any = document.querySelectorAll(".geS5n");
   for (let question of allQuestions) {
-    let options = question.querySelectorAll(".AB7Lab");
-    let prompt = SYSTEM_PROMPT.replace("{{Question}}", question.innerText).replace("1 point", "Options:").replace("*", " ");
-    prompt = prompt.replace("*", "")
-    const solution = await getAIResponse(prompt)
-    if (solution.correctOption != -1) {
-      options[solution.correctOption - 1].click();
-    } else {
-      alert("AI was not able to solve the question but try" + solution.correctOption);
+    try {
+
+      let options = question.querySelectorAll(".AB7Lab");
+      let prompt = SYSTEM_PROMPT.replace("{{Question}}", question.innerText).replace("1 point", "Options:").replace("*", " ");
+      prompt = prompt.replace("*", "")
+      const solution = await getAIResponse(prompt)
+      if (solution.correctOption != -1) {
+        options[solution.correctOption - 1].click();
+      } else {
+        alert("AI was not able to solve the question but try" + solution.correctOption);
+      }
+      console.log(prompt);
+    } catch (e) {
+      alert("some error occured with question" + question.innerText);
+      console.log(e)
     }
-    console.log(prompt);
   };
 };

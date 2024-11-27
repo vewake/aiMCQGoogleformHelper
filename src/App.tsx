@@ -34,7 +34,7 @@ const Popup: React.FC = () => {
             <Input
               value={openAIKey}
               onChange={(e) => setOpenAIKey(e.target.value)}
-              placeholder="OpenAI API Key"
+              placeholder="GEMINI API Key"
             />
             <Button onClick={handleAddOpenAPIKey} className="dark">
               Save
