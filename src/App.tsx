@@ -45,7 +45,7 @@ const Popup: React.FC = () => {
           </div>
 
           <div className='flex flex-row justify-center'>
-            <a href=" https://github.com/vewake/aiGoogleFormSolverExtension" className="text-blue-500" target="_blank">
+            <a href=" https://github.com/vewake/aiMCQGoogleformHelper" className="text-blue-500" target="_blank">
               Github
             </a>
           </div>
