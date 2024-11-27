@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Ai Google Form Solver",
+  "version": "1.0.0",
+  "description": "Chrome extension providing AI-driven Solving for Google Forms having multiple choice questions",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/content.tsx-loader-CZ7LK298.js"
+      ],
+      "matches": [
+        "https://docs.google.com/forms/*"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://docs.google.com/*"
+      ],
+      "resources": [
+        "assets/content.tsx-DTblPgUL.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}
