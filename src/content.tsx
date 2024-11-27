@@ -34,12 +34,17 @@ console.log(allQuestions);
 
 allQuestions.forEach((question: any) => {
   let button = document.createElement("button");
-  button.textContent = "Click me to generate AI Solution";
+  button.textContent = "";
+  button.style.padding = "5px";
+  button.style.margin = "5px";
+  button.style.width = "10px";
+  button.style.height = "10px";
+  button.style.color = "white";
   question.append(button);
   button.onclick = () => {
 
     let options = question.querySelectorAll(".AB7Lab");
-    let prompt = SYSTEM_PROMPT.replace("{{Question}}", question.innerText);
+    let prompt = SYSTEM_PROMPT.replace("{{Question}}", question.innerText).replace("1 point", "Options:").replace("*", "");
     //TODO : Add ai logic here
     const solution = getAIResponse(prompt).then((solution) => {
       if (solution.correctOption != -1) {

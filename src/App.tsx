@@ -41,11 +41,11 @@ const Popup: React.FC = () => {
             </Button>
           </div>
           <div className='text-2xl text-center'>
-            Made by <a href="https://github.com/vewake" className="text-blue-500">Vivek</a>
+            Made by <a href="https://github.com/vewake" target="_blank" className="text-blue-500">Vewake</a>
           </div>
 
           <div className='flex flex-row justify-center'>
-            <a href=" https://github.com/vewake/aiGoogleFormSolverExtension" className="text-blue-500">
+            <a href=" https://github.com/vewake/aiGoogleFormSolverExtension" className="text-blue-500" target="_blank">
               Github
             </a>
           </div>
