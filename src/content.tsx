@@ -29,9 +29,14 @@ async function getAIResponse(prompt: string) {
 }
 
 let allQuestions: any = document.querySelectorAll(".geS5n");
-
 console.log(allQuestions);
 
+let button = document.createElement("button");
+button.textContent = "Solve All";
+allQuestions[0].append(button);
+button.onclick = async () => {
+  solveAllQuestions();
+};
 allQuestions.forEach((question: any) => {
   let button = document.createElement("button");
   button.textContent = "";
@@ -41,11 +46,11 @@ allQuestions.forEach((question: any) => {
   button.style.height = "10px";
   button.style.color = "white";
   question.append(button);
-  button.onclick = () => {
-
+  button.onclick = async () => {
+    navigator.clipboard.writeText(question.innerText.replace("1 point", "Options:"));
     let options = question.querySelectorAll(".AB7Lab");
-    let prompt = SYSTEM_PROMPT.replace("{{Question}}", question.innerText).replace("1 point", "Options:").replace("*", "");
-    //TODO : Add ai logic here
+    let prompt = SYSTEM_PROMPT.replace("{{Question}}", question.innerText).replace("1 point", "Options:").replace("*", " ");
+    prompt = prompt.replace("*", "")
     const solution = getAIResponse(prompt).then((solution) => {
       if (solution.correctOption != -1) {
         options[solution.correctOption - 1].click();
@@ -57,4 +62,19 @@ allQuestions.forEach((question: any) => {
   };
 });
 
+async function solveAllQuestions() {
 
+  let allQuestions: any = document.querySelectorAll(".geS5n");
+  for (let question of allQuestions) {
+    let options = question.querySelectorAll(".AB7Lab");
+    let prompt = SYSTEM_PROMPT.replace("{{Question}}", question.innerText).replace("1 point", "Options:").replace("*", " ");
+    prompt = prompt.replace("*", "")
+    const solution = await getAIResponse(prompt)
+    if (solution.correctOption != -1 && solution.correctOption > 4) {
+      options[solution.correctOption - 1].click();
+    } else {
+      alert("AI was not able to solve the question but try" + solution.correctOption);
+    }
+    console.log(prompt);
+  };
+};
