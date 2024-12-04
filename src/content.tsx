@@ -30,7 +30,7 @@ async function getAIResponse(prompt: string) {
 
 let apiKey = await chrome.storage.local.get("apiKey");
 if (apiKey.apiKey == undefined) {
-  alert("Please set your API key in the extension settings");
+  alert("Please set your API key by cliking on the extension icon");
 } else {
   let allQuestions: any = document.querySelectorAll(".geS5n");
 
