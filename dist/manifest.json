@@ -12,20 +12,25 @@
   "content_scripts": [
     {
       "js": [
-        "assets/content.tsx-loader-CZ7LK298.js"
+        "src/content.tsx-loader.js"
       ],
       "matches": [
         "https://docs.google.com/forms/*"
       ]
     }
   ],
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
   "web_accessible_resources": [
     {
       "matches": [
-        "https://docs.google.com/*"
+        "<all_urls>"
       ],
       "resources": [
-        "assets/content.tsx-DTblPgUL.js"
+        "**/*",
+        "*"
       ],
       "use_dynamic_url": false
     }
