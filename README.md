@@ -1,4 +1,5 @@
 # MCQ GOOGLE FORM HELPER
+This is a chrome extension which uses google gemini API to solve MCQ question in any google form and tick the correct option
 ## installation
  
 
